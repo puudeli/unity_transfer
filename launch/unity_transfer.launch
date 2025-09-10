@@ -1,0 +1,7 @@
+<launch>
+  
+    <node pkg="unity_transfer" name="pose_converter" type="pose_converter.py" output="screen"/>  
+    <node pkg="unity_transfer" name="grasping_frames_transformer" type="grasping_frames_transformer.py" output="screen"/>  
+    <node pkg="ros_tcp_endpoint" name="unity_endpoint" type="default_server_endpoint.py" output="screen"/>  
+    
+</launch>   
