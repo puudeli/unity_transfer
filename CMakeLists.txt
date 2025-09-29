@@ -14,6 +14,10 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   ros_tcp_endpoint
   message_generation
+  tf2_ros
+  trajectory_msgs
+  actionlib_msgs
+  control_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -74,6 +78,9 @@ generate_messages(
   DEPENDENCIES
   geometry_msgs
   std_msgs
+  trajectory_msgs
+  actionlib_msgs
+  control_msgs
 )
 
 ################################################
@@ -108,7 +115,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES unity_transfer
-  CATKIN_DEPENDS roscpp rospy std_msgs ros_tcp_endpoint message_runtime
+  CATKIN_DEPENDS roscpp rospy std_msgs ros_tcp_endpoint message_runtime trajectory_msgs actionlib_msgs control_msgs
 #  DEPENDS system_lib
 )
 
