@@ -10,8 +10,8 @@ class GraspingFrameTransformer:
         rospy.init_node("grasping_frames_transformer")
         rospy.loginfo("Initialised grasping_frames_transformer")
         
-        self.left_gripper_pose = rospy.Publisher("left_grasping_frame_transform", Transform, queue_size=1)
-        self.right_gripper_pose = rospy.Publisher("right_grasping_frame_transform", Transform, queue_size=1)
+        self.left_gripper_pose = rospy.Publisher("/left_grasping_frame_transform", Transform, queue_size=1)
+        self.right_gripper_pose = rospy.Publisher("/right_grasping_frame_transform", Transform, queue_size=1)
         self.tfBuffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.tfBuffer)
 

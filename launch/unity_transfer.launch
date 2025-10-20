@@ -1,11 +1,14 @@
 <launch>
     <arg name="torso_upper_limit" default="0.35"/>
     <arg name="torso_lower_limit" default="0.0"/>
-    <!-- <arg name="torso_vel_limit" default="0.07"/> -->
+    <arg name="torso_upper_vel_limit" default="0.01"/>
+    <arg name="torso_lower_vel_limit" default="-0.01"/>
 
     <node pkg="unity_transfer" name="pose_converter" type="pose_converter.py" output="screen"/>  
     <node pkg="unity_transfer" name="grasping_frames_transformer" type="grasping_frames_transformer.py" output="screen"/>  
     <node pkg="ros_tcp_endpoint" name="unity_endpoint" type="default_server_endpoint.py" output="screen"/>  
+    <node pkg="dynamic_reconfigure" name="dynparam_torso_upper_vel_limit" type="dynparam" args="set /whole_body_kinematic_controller/joint_limits/joint_limits torso_lift_joint_upper_vel $(arg torso_upper_vel_limit)" output="screen"/>
+    <node pkg="dynamic_reconfigure" name="dynparam_torso_lower_vel_limit" type="dynparam" args="set /whole_body_kinematic_controller/joint_limits/joint_limits torso_lift_joint_lower_vel $(arg torso_lower_vel_limit)" output="screen"/>
     <node pkg="dynamic_reconfigure" name="dynparam_torso_upper_limit" type="dynparam" args="set /whole_body_kinematic_controller/joint_limits/joint_limits torso_lift_joint_upper_pos $(arg torso_upper_limit)" output="screen"/>
     <node pkg="dynamic_reconfigure" name="dynparam_torso_lower_limit" type="dynparam" args="set /whole_body_kinematic_controller/joint_limits/joint_limits torso_lift_joint_lower_pos $(arg torso_lower_limit)" output="screen"/>
 </launch>   
